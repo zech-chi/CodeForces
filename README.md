@@ -1,6 +1,4 @@
 # Quest
-It is recommended to watch this video before starting this series of contests:
-
 https://www.youtube.com/watch?v=c3lmvYBxgwE
 
 roadmap sheet:
