@@ -1,3 +1,11 @@
+/*
+* ███████╗███████╗ ██████╗██╗  ██╗       ██████╗██╗  ██╗██╗
+* ╚══███╔╝██╔════╝██╔════╝██║  ██║      ██╔════╝██║  ██║██║
+*   ███╔╝ █████╗  ██║     ███████║█████╗██║     ███████║██║
+*  ███╔╝  ██╔══╝  ██║     ██╔══██║╚════╝██║     ██╔══██║██║
+* ███████╗███████╗╚██████╗██║  ██║      ╚██████╗██║  ██║██║
+* ╚══════╝╚══════╝ ╚═════╝╚═╝  ╚═╝       ╚═════╝╚═╝  ╚═╝╚═╝
+*/
 #include <algorithm>
 #include <cstddef>
 #include <cstdlib>
@@ -13,24 +21,39 @@
 typedef long long ll;
 using namespace std;
 
-int min(int x, int y) { return (x > y ? y : x); }
-int max(int x, int y) { return (x < y ? y : x); }
-int abs(int x) { return (x > 0 ? x : -x); }
+ll min(ll x, ll y) { return (x > y ? y : x); }
+ll max(ll x, ll y) { return (x < y ? y : x); }
 
 void solve()
 {
     int n; cin >> n;
+    string s;
     vector<pair<string, string> > bus(n);
-    int pos;
-    string line;
     for (int i = 0; i < n; i++) {
-        cin >> line;
-        pos = line.find('|');
-        bus[i] = make_pair(line.substr(0, pos), line.substr(pos + 1));
+        cin >> s;
+        int pos = s.find('|');
+        bus[i] = make_pair(s.substr(0, pos), s.substr(pos + 1));
     }
 
+    int i = 0;
+    while (i < n) {
+        if (bus[i].first == "OO") {
+            bus[i].first = "++";
+            break;
+        }
+        if (bus[i].second == "OO") {
+            bus[i].second = "++";
+            break;
+        }
+        i++;
+    }
+    if (i == n) {
+        cout << "NO\n";
+        return ;
+    }
+    cout << "YES\n";
     for (int i = 0; i < n; i++) {
-        cout << bus[i].first << "     " << bus[i].second << endl;
+        cout << bus[i].first << "|" << bus[i].second << "\n";
     }
 }
 
