@@ -18,17 +18,28 @@ using namespace std;
 
 void solve()
 {
-    int a, b, c, d; cin >> a >> b >> c >> d;
+    int n, m, k; cin >> n >> m >> k;
+    int a;
+    int count = 0;
+    while (n--) {
+        cin >> a;
+        if (a == 1) {
+            if (m)
+                m--;
+            else
+                count++;
+        } else {
+            if (k)
+                k--;
+            else if (m)
+                m--;
+            else
+                count++;
+        }
+    }
 
-    double misha = max(1.0 * a * 3 / 10.0, a * 1.0 - 1.0 * a * c / 250.0);
-    double vasya = max(1.0 * b * 3 / 10.0, b * 1.0 - 1.0 * b * d / 250.0);
+    cout << count << "\n";
 
-    if (misha < vasya)
-        cout << "Vasya\n";
-    else if (misha > vasya)
-        cout << "Misha\n";
-    else
-        cout << "Tie\n";
 }
 
 int main()

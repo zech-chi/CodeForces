@@ -18,17 +18,24 @@ using namespace std;
 
 void solve()
 {
-    int a, b, c, d; cin >> a >> b >> c >> d;
+    string s; cin >> s;
+    vector<string> vs(10), vv(10);
+    for (int i = 0; i < 10; i++) {
+        cin >> vv[i];
+    }
+    for (int i = 0; i < 8; i++) {
+        vs[i] = s.substr(i * 10, 10);
+    }
 
-    double misha = max(1.0 * a * 3 / 10.0, a * 1.0 - 1.0 * a * c / 250.0);
-    double vasya = max(1.0 * b * 3 / 10.0, b * 1.0 - 1.0 * b * d / 250.0);
-
-    if (misha < vasya)
-        cout << "Vasya\n";
-    else if (misha > vasya)
-        cout << "Misha\n";
-    else
-        cout << "Tie\n";
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (vs[i] == vv[j]) {
+                cout << j;
+                break;
+            }
+        }
+    }
+    cout << "\n";
 }
 
 int main()
