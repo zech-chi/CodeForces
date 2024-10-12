@@ -27,7 +27,7 @@ void solve()
     vector<string> s1, s2, s3;
     s1.push_back("zero");
     s1.push_back("one");
-    s1.push_back("tho");
+    s1.push_back("two");
     s1.push_back("three");
     s1.push_back("four");
     s1.push_back("five");
