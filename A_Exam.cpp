@@ -22,20 +22,28 @@ using namespace std;
 
 void solve()
 {
-    ll n, x; cin >> n >> x;
-
-    if (n * n < x) {
-        cout << "0\n";
+    int n; cin >> n;
+    int i = 1;
+    int j = n / 2 + 1 + n % 2;
+    vector<int> ans;
+    
+    if (n < 3) {
+        cout << "1\n1\n";
         return ;
     }
 
-    ll number_of_div = 0;
-    for (ll i = 1; i <= n; i++) {
-        if (x % i == 0 && x / i <= n)
-            number_of_div++;
+    while (i <= (n / 2 + n % 2) && j <= n) {
+        ans.push_back(i++);
+        ans.push_back(j++);
     }
+    if (i <= (n / 2 + n % 2) && (ans.empty() || ans[ans.size() - 1] > i + 1))
+        ans.push_back(i);
 
-    cout << number_of_div << "\n";
+    cout << ans.size() << "\n";
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
+    }
+    cout << "\n";
 }
 
 int main()
