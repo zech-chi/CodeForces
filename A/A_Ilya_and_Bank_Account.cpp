@@ -15,24 +15,23 @@
 #include <iomanip>
 typedef long long ll;
 using namespace std;
+#define abs(a) (((a) > 0) ? (a) : (-(a)))
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) > (b)) ? (b) : (a))
+
 
 void solve()
 {
-    string n; cin >> n;
-    if (n[0] != '-') {
+    int n; cin >> n;
+    
+    if (n > 0) {
         cout << n << "\n";
-    } else if (n[2] == '0' && n.size() == 3) {
-        cout << "0\n";
-    } else if (n[2] == '0') {
-        for (int i = 0; i < n.size() - 1; i++)
-            cout << n[i];
-        cout << "\n";
-    } else {
-        cout << "-";
-        for (int i = 1; i < n.size() - 1; i++)
-            cout << n[i];
-        cout << "\n";
+        return ;
     }
+
+    cout << max(n / 10, (n / 100) * 10 + (n % 10)) << "\n";
+
+    
 }
 
 int main()
