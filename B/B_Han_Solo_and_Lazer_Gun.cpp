@@ -23,7 +23,27 @@ using namespace std;
 
 void solve()
 {
+    int n;
+    double x0, y0;
+    double x, y;
+    double a, b;
+    set<pair<double, double> > lines;
+    bool flag = false;
 
+    cin >> n >> x0 >> y0;
+    while (n--) {
+        cin >> x >> y;
+        if (x == x0) {
+            flag = true;
+            continue;
+        }
+        a = (y - y0) / (x - x0);
+        b = y0 - a * x0;
+        if (lines.find(make_pair(a, b)) == lines.end())
+            lines.insert(make_pair(a, b));
+    }
+
+    cout << lines.size() + (1 * flag) << "\n";
 }
 
 int main()
