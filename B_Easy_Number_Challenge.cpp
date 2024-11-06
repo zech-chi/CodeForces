@@ -23,9 +23,12 @@ using namespace std;
 
 int d(int n) {
     int count = 0;
-    for (int i = 1; i <= n; i++) {
-        if (n % i == 0)
-            count++;
+    for (int i = 1; i <= sqrt(n); i++) {
+        if (n % i == 0) {
+            count += 2;
+            if (n / i == i)
+                count--;
+        }
     }
     return (count);
 }
