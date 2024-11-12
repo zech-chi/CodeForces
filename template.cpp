@@ -21,17 +21,22 @@ using namespace std;
 #define min(a, b) (((a) > (b)) ? (b) : (a))
 
 
-void solve()
-{
+class Solution {
+private:
 
-}
+public:
+    void solve() {
+
+    }
+
+};
+
 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    solve();
+    Solution().solve();
     return (0);
 }
-
