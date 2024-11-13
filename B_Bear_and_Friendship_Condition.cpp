@@ -69,6 +69,8 @@ void solve()
     cout << "YES\n";
 }
 
+
+
 int main()
 {
     ios_base::sync_with_stdio(false);
