@@ -8,6 +8,7 @@
 #include <sstream>
 #include <iterator>
 #include <set>
+#include <queue>
 #include <map>
 #include <vector>
 #include <numeric>
