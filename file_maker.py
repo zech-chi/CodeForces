@@ -1,3 +1,5 @@
+print("enter file name: ", end="")
+
 name = input()
 
 splited_name = name.split()
