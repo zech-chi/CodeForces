@@ -8,6 +8,8 @@
 #include <sstream>
 #include <iterator>
 #include <set>
+#include <queue>
+#include <map>
 #include <vector>
 #include <numeric>
 #include <cmath>
@@ -20,38 +22,45 @@ using namespace std;
 #define min(a, b) (((a) > (b)) ? (b) : (a))
 
 
-void solve()
-{
-    int n; cin >> n;
-    int i = 1;
-    int j = n / 2 + 1 + n % 2;
-    vector<int> ans;
-    
-    if (n < 3) {
-        cout << "1\n1\n";
-        return ;
+class Solution {
+private:
+
+public:
+    void solve() {
+        int n; cin >> n;
+        if (n == 4) {
+            cout << "4\n3 1 4 2\n";
+            return;
+        }
+
+        vector<int> res;
+        int first_half = ceil(n / 2.0);
+        int x = 1;
+
+        for (int i = 0; i < first_half; i++) {
+            res.push_back(x);
+            x += 2;
+        }
+
+        for (int j = 2; j <= n; j += 2) {
+            if (abs(j - res[res.size() - 1]) > 1)
+                res.push_back(j);
+        }
+
+        cout << res.size() << "\n";
+        for (int i = 0; i < res.size(); i++) cout << res[i] << " ";
+        cout << "\n";
+
     }
 
-    while (i <= (n / 2 + n % 2) && j <= n) {
-        ans.push_back(i++);
-        ans.push_back(j++);
-    }
-    if (i <= (n / 2 + n % 2) && (ans.empty() || ans[ans.size() - 1] > i + 1))
-        ans.push_back(i);
+};
 
-    cout << ans.size() << "\n";
-    for (int i = 0; i < ans.size(); i++) {
-        cout << ans[i] << " ";
-    }
-    cout << "\n";
-}
 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    solve();
+    Solution().solve();
     return (0);
 }
-
