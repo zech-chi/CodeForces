@@ -27,30 +27,18 @@ private:
 
 public:
     void solve() {
-        int n; cin >> n;
-        if (n == 4) {
-            cout << "4\n3 1 4 2\n";
-            return;
+        int t; cin >> t;
+        while (t--) {
+            int a, b, c, d; cin >> a >> b >> c >> d;
+            vector<int> v = {a, b, c, d};
+            sort(v.begin(), v.end());
+            for (int i = 0; i < 4; i++) {
+                if (v[i] == a) {
+                    cout << 4 - i - 1 << "\n";
+                    break;
+                }
+            }
         }
-
-        vector<int> res;
-        int first_half = ceil(n / 2.0);
-        int x = 1;
-
-        for (int i = 0; i < first_half; i++) {
-            res.push_back(x);
-            x += 2;
-        }
-
-        for (int j = 2; j <= n; j += 2) {
-            if (abs(j - res[res.size() - 1]) > 1)
-                res.push_back(j);
-        }
-
-        cout << res.size() << "\n";
-        for (int i = 0; i < res.size(); i++) cout << res[i] << " ";
-        cout << "\n";
-
     }
 
 };
