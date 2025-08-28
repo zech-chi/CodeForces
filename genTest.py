@@ -1,4 +1,12 @@
-print(int(1e6))
+import random
 
-for i in range(1, int(1e6) + 1):
-    print(i)
+t = 1
+
+print(t)
+
+for i in range(t):
+    n = 8
+    print(n)
+    l = [i for i in range(n)]
+    random.shuffle(l)
+    print(" ".join(map(str, l)))
