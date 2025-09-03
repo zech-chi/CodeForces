@@ -1,26 +1,17 @@
 /*
 *   zech-chi
 */
-#include <algorithm>
-#include <cstddef>
-#include <cstdlib>
-#include <iostream>
-#include <sstream>
-#include <iterator>
-#include <set>
-#include <queue>
-#include <map>
-#include <vector>
-#include <numeric>
-#include <cmath>
-#include <stack>
-#include <iomanip>
-typedef long long ll;
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
 using namespace std;
-#define abs(a) (((a) > 0) ? (a) : (-(a)))
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-#define min(a, b) (((a) > (b)) ? (b) : (a))
+typedef long long ll;
+#define endl "\n";
 
+// Define ordered_set
+template <typename T>
+using ordered_set = tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>;
 
 class Solution {
 private:
@@ -30,14 +21,21 @@ public:
 
     }
 
+    void start() {
+        ll t = 1;
+        cin >> t;
+        while (t--) {
+            solve();
+        }
+    }
 };
 
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    Solution().solve();
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    Solution().start();
     return (0);
 }
