@@ -8,44 +8,43 @@ using namespace __gnu_pbds;
 using namespace std;
 typedef long long ll;
 #define endl "\n";
-
+ 
 // Define ordered_set
 template <typename T>
 using ordered_set = tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>;
-
+ 
 // minHeap
 // priority_queue<int, vector<int>, greater<int>> minHeap;
+ 
 
-class SparseTableMax {
-private:
-    vector<vector<ll>> _data;
-public:
-    void build(vector<ll> &v, ll n) {
-        ll h = floor(log2(n)) + 1;
-        _data.assign(h, vector<ll>(n));
-        for (ll i = 0; i < n; i++) _data[0][i] = v[i];
-        for (ll j = 1; j < h; j++) {
-            for (ll i = 0; i + (1 << j) <= n; i++) {
-                _data[j][i] = max(_data[j-1][i], _data[j-1][i + (1 << (j-1))]);
-            }
-        }
-    }
-    
-    ll query(ll l, ll r) {
-        ll len = r - l + 1;
-        ll p = 31 - __builtin_clz(len);
-        return max(_data[p][l], _data[p][r - (1 << p) + 1]);
-    }
-};
-
+ 
+ 
 class Solution {
 private:
-
+ 
 public:
     void solve() {
-
+        ll n, a, b; cin >> n >> a >> b;
+        vector<ll> v(n);
+        for (ll i = 0; i < n; i++) {
+            cin >> v[i];
+            if (i > 0) v[i] += v[i - 1];
+        }
+        SparseTableMax stm;
+        stm.build(v, n);
+        ll maxSum = -1e18;
+        for (ll i = 0; i < n; i++) {
+            ll left = i + a - 1;
+            ll right = i + b - 1;
+            if (left >= n) break;
+            if (right >= n) right = n - 1;
+            ll curSum = stm.query(left, right);
+            if (i > 0) curSum -= v[i - 1];
+            maxSum = max(curSum, maxSum);
+        }
+        cout << maxSum << endl;
     }
-
+ 
     void start() {
         ll t = 1;
         // cin >> t;
@@ -54,8 +53,8 @@ public:
         }
     }
 };
-
-
+ 
+ 
 int main()
 {
     ios_base::sync_with_stdio(0);
